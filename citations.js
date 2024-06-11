@@ -23,21 +23,30 @@ let citations = [
     ["Un pessimiste voit la difficulté dans chaque opportunité. Un optimiste voit une opportunité dans chaque difficulté.", "Winston Churchill"]
   ];
 
-let dernier = citations[0];
-let nombreAleatoire ; 
+let dernier = 0;
+let nombreAleatoire = 0; 
 
-
+let btn = document.getElementById('nouveau');
 let citation = document.getElementById('citation');
 let author = document.getElementById('auteur');
 
-let btn = document.getElementById('nouveau');
-
 btn.addEventListener('click', () => {
-  nombreAleatoire =  genererNombreEntier(citations.length - 1);
-  console.log(nombreAleatoire);
-})
+  do {
+    nombreAleatoire =  genererNombreEntier(citations.length - 1);
+}
+while (nombreAleatoire == dernier)
+
+citation.textContent = citations[nombreAleatoire][0];
+author.textContent = citations[nombreAleatoire][1];
+dernier = nombreAleatoire;
+
+});
 
 function genererNombreEntier(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
+
+
+
+
 
